@@ -25,7 +25,7 @@ namespace DepotDownloader
 
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            var sb = new StringBuilder().Append($"{eventData.TimeStamp:HH:mm:ss.fffffff}  {eventData.EventSource.Name}.{eventData.EventName}(");
+            var sb = new StringBuilder().Append($"{new DateTime():HH:mm:ss.fffffff}  {eventData.EventSource.Name}.{eventData.EventName}(");
             for (var i = 0; i < eventData.Payload?.Count; i++)
             {
                 sb.Append(eventData.PayloadNames?[i]).Append(": ").Append(eventData.Payload[i]);

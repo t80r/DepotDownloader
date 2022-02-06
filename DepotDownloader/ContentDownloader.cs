@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using SteamKit2;
@@ -434,7 +435,7 @@ namespace DepotDownloader
             Directory.CreateDirectory(Path.GetDirectoryName(fileStagingPath));
 
             using (var file = File.OpenWrite(fileStagingPath))
-            using (var client = HttpClientFactory.CreateHttpClient())
+            using (var client = new HttpClient())
             {
                 Console.WriteLine("Downloading {0}", fileName);
                 var responseStream = await client.GetStreamAsync(url);
